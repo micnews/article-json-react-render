@@ -1,0 +1,29 @@
+{
+  "name": "article-json-react-render",
+  "version": "0.0.0",
+  "description": "Render article json as react components",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm run lint && babel-tape-runner test.js",
+    "lint": "miclint | snazzy",
+    "prepublish": "mkdir -p dist && babel lib --out-dir dist"
+  },
+  "author": "mic.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micnews/article-json-react-render.git"
+  },
+  "bugs": {
+    "url": "https://github.com/micnews/article-json-react-render/issues"
+  },
+  "homepage": "https://github.com/micnews/article-json-react-render#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-tape-runner": "^2.0.1",
+    "miclint": "^4.2.2",
+    "snazzy": "^7.0.0",
+    "tapava": "^2.3.0"
+  }
+}
