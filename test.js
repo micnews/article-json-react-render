@@ -203,6 +203,24 @@ test('text with no content', (t) => {
   t.is(actual, expected);
 });
 
+test('Should render empty mark', (t) => {
+  const Article = setupArticle({ embeds: {} });
+
+  const items = [{
+    type: 'paragraph',
+    children: [{
+      type: 'text',
+      content: '',
+      mark: true,
+    }],
+  }];
+
+  const actual = renderHtmlString(<Article items={items} />);
+  const expected = renderHtmlString(<article><p><mark /></p></article>);
+
+  t.is(actual, expected);
+});
+
 test('text with no content, opts.renderEmptyTextNodes = true', (t) => {
   const Article = setupArticle({ embeds: {}, renderEmptyTextNodes: true });
   const items = [
@@ -224,6 +242,19 @@ test('text with no content, opts.renderEmptyTextNodes = true', (t) => {
     <h6 />
   </article>);
   /* eslint-enable */
+
+  t.is(actual, expected);
+});
+
+test('invalid type', (t) => {
+  const Article = setupArticle({ embeds: {} });
+
+  const items = [{
+    type: 'invalid-type',
+    children: [],
+  }];
+  const actual = renderHtmlString(<Article items={items} />);
+  const expected = renderHtmlString(<article />);
 
   t.is(actual, expected);
 });
@@ -526,6 +557,9 @@ test('customTextFormattings', (t) => {
       type: 'text',
       content: 'underlined text',
       underline: true,
+    }, {
+      type: 'text',
+      content: 'regular text',
     }],
   }, {
     type: 'header1',
@@ -558,7 +592,7 @@ test('customTextFormattings', (t) => {
   }];
   const actual = renderHtmlString(<Article items={items} />);
   const expected = renderHtmlString(<article>
-    <p><span style={{ textDecoration: 'underline' }}>underlined text</span></p>
+    <p><span style={{ textDecoration: 'underline' }}>underlined text</span>regular text</p>
     <h1><span style={{ textDecoration: 'underline' }}>underlined text</span></h1>
     <figure>
       <img alt='alt-text' src='http://example.com/image.jpg' />

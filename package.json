@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "test:code": "babel-tape-runner test.js",
-    "test": "npm run lint && npm run test:code",
+    "test": "npm run lint && nyc npm run test:code",
     "lint": "miclint | snazzy",
     "prepublish": "mkdir -p dist && babel lib --out-dir dist"
   },
@@ -26,6 +26,7 @@
     "babel-tape-runner": "^2.0.1",
     "enzyme": "^2.8.0",
     "miclint": "^4.2.2",
+    "nyc": "^10.2.0",
     "react-addons-test-utils": "^15.5.1",
     "snazzy": "^7.0.0",
     "tapava": "^2.3.0"
@@ -34,5 +35,12 @@
     "lodash.startswith": "^4.2.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "statements": 100,
+    "branches": 100,
+    "functions": 100,
+    "lines": 100
   }
 }
