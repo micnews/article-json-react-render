@@ -74,6 +74,27 @@ test('embed with custom figureProps', (t) => {
   t.is(actual, expected);
 });
 
+test('embed figureProps.class renders as className', (t) => {
+  const Article = setupArticle({
+    embeds: { custom: () => <span /> },
+  });
+  const items = [{
+    type: 'embed',
+    embedType: 'custom',
+    figureProps: {
+      class: 'custom-class',
+    },
+  }];
+  const actual = renderHtmlString(<Article items={items} />);
+  const expected = renderHtmlString(<article>
+    <figure className='custom-class'>
+      <span />
+    </figure>
+  </article>);
+
+  t.is(actual, expected);
+});
+
 test('text elements', (t) => {
   const Article = setupArticle({ embeds: {} });
 

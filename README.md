@@ -25,6 +25,7 @@ npm test
 ## Dev Dependencies
 
 - [babel-cli](): Babel command line.
+- [babel-plugin-transform-object-assign](): Replace Object.assign with an inline helper
 - [babel-plugin-transform-react-jsx](): Turn JSX into React function calls
 - [babel-preset-es2015](): Babel preset for all es2015 plugins.
 - [babel-tape-runner](https://github.com/wavded/babel-tape-runner): Babel + Tape for running your ES Next tests
