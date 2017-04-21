@@ -1,3 +1,4 @@
+/* @flow */
 /* eslint-disable import/no-extraneous-dependencies, react/display-name, react/prop-types */
 
 import test from 'tapava';
