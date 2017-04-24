@@ -224,6 +224,21 @@ test('text with no content', (t) => {
   t.is(actual, expected);
 });
 
+test('text with no children', (t) => {
+  const Article = setupArticle({ embeds: {} });
+  const items = [
+    'paragraph',
+    'header1', 'header2', 'header3', 'header4', 'header5', 'header6',
+  ].map(type => ({
+    type,
+  }));
+
+  const actual = renderHtmlString(<Article items={items} />);
+  const expected = renderHtmlString(<article />);
+
+  t.is(actual, expected);
+});
+
 test('Should render empty mark', (t) => {
   const Article = setupArticle({ embeds: {} });
 
