@@ -1,6 +1,6 @@
 {
   "name": "article-json-react-render",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Render article json as react components",
   "main": "dist/index.js",
   "scripts": {
