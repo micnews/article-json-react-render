@@ -3,10 +3,10 @@
 
 import test from 'tapava';
 import React from 'react';
-import { render } from 'enzyme';
+import { shallow } from 'enzyme';
 import setupArticle from './lib/index';
 
-const renderHtmlString = component => render(component).html();
+const renderHtmlString = component => shallow(component).html();
 
 test('embed', (t) => {
   t.plan(2);
@@ -62,13 +62,12 @@ test('embed with custom figureProps', (t) => {
     embedType: 'twitter',
     id: 'twitter-id',
     figureProps: {
-      foo: 'bar',
-      hello: 'world',
+      id: 'foo',
     },
   }];
   const expected = renderHtmlString(
     <article>
-      <figure foo='bar' hello='world'><span id='twitter-id' /></figure>
+      <figure id='foo'><span id='twitter-id' /></figure>
     </article>);
   const actual = renderHtmlString(<Article items={items} />);
 
@@ -138,7 +137,7 @@ test('text elements', (t) => {
   t.is(actual, expected);
 });
 
-test('text and it\'s formattings', (t) => {
+test('text and its formattings', (t) => {
   const Article = setupArticle({ embeds: {} });
   const items = [
     {

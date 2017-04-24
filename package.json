@@ -4,8 +4,8 @@
   "description": "Render article json as react components",
   "main": "dist/index.js",
   "scripts": {
-    "test:code": "babel-tape-runner test.js",
-    "test": "npm run flow && npm run lint && nyc npm run test:code",
+    "test:code": "nyc babel-tape-runner test.js",
+    "test": "npm run flow && npm run lint && npm run test:code",
     "lint": "miclint --flow | snazzy",
     "build": "mkdir -p dist && babel lib --out-dir dist",
     "watch": "mkdir -p dist && babel lib --out-dir dist --watch",
