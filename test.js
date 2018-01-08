@@ -1,5 +1,6 @@
 /* @flow */
-/* eslint-disable import/no-extraneous-dependencies, react/display-name, react/prop-types */
+/* eslint-disable import/no-extraneous-dependencies, react/display-name,
+  react/prop-types, react/prefer-stateless-function */
 
 import test from 'tapava';
 import React from 'react';
@@ -41,6 +42,31 @@ test('unknown embed', (t) => {
     embedType: 'unknown-embed',
   }];
   const expected = renderHtmlString(<article />);
+  const actual = renderHtmlString(<Article items={items} />);
+
+  t.is(actual, expected);
+});
+
+test('embed can be class component', (t) => {
+  t.plan(1);
+
+  class CustomEmbed extends React.Component {
+    render() {
+      return <span>Custom Embed</span>;
+    }
+  }
+
+  const Article = setupArticle({
+    embeds: {
+      custom: CustomEmbed,
+    },
+  });
+  const items = [{
+    type: 'embed',
+    embedType: 'custom',
+  }];
+  const expected = renderHtmlString(
+    <article><figure><span>Custom Embed</span></figure></article>);
   const actual = renderHtmlString(<Article items={items} />);
 
   t.is(actual, expected);
